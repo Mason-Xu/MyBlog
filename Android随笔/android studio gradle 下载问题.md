@@ -15,6 +15,6 @@
 
  3.下载后，将压缩包放到  `C:\Users\用户名\.gradle\wrapper\dists\gradle-x.x-all\xxxxxxxxxxxxxxx`
 
-  https://github.com/Mason-Xu/PictureLibrary/blob/master/Picture/android3.png
+  ![](https://github.com/Mason-Xu/PictureLibrary/blob/master/Picture/android3.png)
 
  4.重写启动Studio即可
