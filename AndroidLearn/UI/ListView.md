@@ -37,8 +37,8 @@
   1. 定义一个实体类,作为ListView适配器的适配类型,新建Fruit
      ```java
      public class Fruit {
-     private String name;
-     private int imageId;
+         private String name;
+         private int imageId;
 
      public Fruit(String name, int imageId) {
          this.name = name;
@@ -88,7 +88,7 @@
         @Override
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                 Fruit fruit = (Fruit) getItem(position); // 获取当前项的Fruit实例
-                View view =     LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
+                View view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
                 ImageView fruitImage = (ImageView) view.findViewById(R.id.fruit_image);
                 TextView fruitName = (TextView) view.findViewById(R.id.fruit_name);
                 fruitImage.setImageResource(fruit.getImageId());
@@ -140,3 +140,89 @@
            }
           }
           ```
+## 提升ListView运行效率   修改FruitAdapter
+  ### 在getView() 方法中还有 convertView参数,用于将之前加载好的布局进行缓存,以后可重用
+  - 对getView()方法进行判断,如果convertView为null,则使用LayoutInflater 加载布局,不为null则直接对convertView进行重用
+    ```java
+    public class FruitAdapter extends ArrayAdapter {
+      ...
+      @Override
+      public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+          Fruit fruit = (Fruit) getItem(position); // 获取当前项的Fruit实例
+          View view;
+          if(convertView == null){
+              view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
+          }else{
+              view = convertView;
+          }
+          ImageView fruitImage = (ImageView) view.findViewById(R.id.fruit_image);
+          TextView fruitName = (TextView) view.findViewById(R.id.fruit_name);
+          fruitImage.setImageResource(fruit.getImageId());
+          fruitName.setText(fruit.getName());
+          return view;
+      }
+    }
+      ```
+  ### 继续优化 借助**ViewHolder**来对部分性能进行优化  修改FruitAdapter 📖P120
+  1. 新建一个内部类ViewHolder,用于对控件的实例进行缓存
+  2. 当converView为null时,创建一个ViewHolder对象,并将控件的实例都存放在ViewHolder里
+  3. 然后调用View的setTag() 方法,将ViewHolder对象存储在View中.
+  4. 当convertView不为null时,则调用View的getTag()方法,吧ViewHolder重新取出.
+  5. 这样所有空间的实例都缓存在了ViewHolder里,就**没有必要每次都通过findViewById() 方法来获取控件实例**
+      ```java
+      public class FruitAdapter extends ArrayAdapter {
+        ...
+        @Override
+        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+            Fruit fruit = (Fruit) getItem(position); // 获取当前项的Fruit实例
+            View view;
+            ViewHoler viewHolder;
+            if(convertView == null){
+                view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
+                viewHolder = new ViewHoler();
+                viewHolder.fruitImage = (ImageView)   view.findViewById(R.id.fruit_image);
+                viewHolder.fruitName = (TextView) view.findViewById(R.id.fruit_name);
+                view.setTag(viewHolder); // 将ViewHolder存储在View中
+            }else{
+                view = convertView;
+                viewHolder = (ViewHoler) view.getTag(); // 重新获取ViewHolder
+            }
+            viewHolder.fruitImage.setImageResource(fruit.getImageId());
+            viewHolder.fruitName.setText(fruit.getName());
+            return view;
+        }
+        class ViewHoler{
+            ImageView fruitImage;
+            TextView fruitName;
+          }
+      }
+## 为ListView添加点击事件
+  - 在MainActivity 添加 点击事件 Toast
+  1. 使用setOnItemClickListener() 方法为ListView 注册一个监听器
+  2. 点击任何一个子项是,回调onItemClick() 方法
+  3. 这个方法可以通过position 参数判断用户点击的是哪个子项,然后获取相应的水果
+  4. 通过Toast将水果的名字显示出来
+      ```java
+      public class MainActivity extends AppCompatActivity {
+
+        private List<Fruit> fruitList = new ArrayList<>();
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
+            initFruits(); // 初始化水果数据
+            FruitAdapter adapter = new FruitAdapter(MainActivity.this,R.layout.fruit_item,fruitList);
+            ListView listView = (ListView) findViewById(R.id.list_view);
+            listView.setAdapter(adapter);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+              @Override
+              public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                  Fruit fruit = fruitList.get(position);
+                  Toast.makeText(MainActivity.this,fruit.getName(),Toast.LENGTH_SHORT).show();
+              }
+          });
+        }
+
+        ...
+      }

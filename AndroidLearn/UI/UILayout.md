@@ -1,8 +1,8 @@
 # UILayout
 
 ## LinearLayout 线性布局
- - 默认`android:orientation="horizontal"`
- - layout_gravity 对齐方式
+ - 默认`android:orientation="horizontal"` 水平布局
+ - `layout_gravity` 对齐方式  `center_vertical` 垂直居中` center_horizontal` 水平居中
    - center
    - bottom
    - top
