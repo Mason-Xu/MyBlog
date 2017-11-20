@@ -109,7 +109,7 @@
  - 虽然比ListView繁琐,但是ListView给单独按钮注册事件更加繁琐
    1. 修改ViewHolder,添加fruitView变量来保存子项最外层布局的实例
    2. 然后在onCreatViewHolder()方法中注册点击事件就行了.
-   3. 这里项目分别为最外层布局和image注册了点击事件.
+   3. 这里项目分别为最外层布局和Image注册了点击事件.
  - RecyclerView强大在于,可以轻松实现子项中任意控件或布局的点击事件
    1. 我们先获取用户点击的position
    2. 通过position拿到相应的Fruit实例
