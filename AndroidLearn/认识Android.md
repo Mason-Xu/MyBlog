@@ -1,5 +1,7 @@
 # 认识Android
 
+
+
 ## Android四层架构 :
   1. Linux内核层  --- 底层驱动 显卡,蓝牙,声卡驱动 电源管理
   2. 系统运行类库 --- 通过一些C/C+库来为Android系统提供主要的特性支持
@@ -50,3 +52,8 @@
   10. build.gradle app模块的gradle构建脚本
   11. proguard-rules.pro 项目代码混淆规则
   ![](http://oz2u8kxpt.bkt.clouddn.com/17-11-10/45983605.jpg)
+
+
+  >这是我学习Android的笔记,参考书<<第一行代码-第二版>>,感谢郭霖大神  
+  如有不足之处,可以一起讨论    
+  附上郭霖的blog http://blog.csdn.net/guolin_blog

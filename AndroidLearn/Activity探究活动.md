@@ -139,4 +139,7 @@
           Log.d("SecondActivity", data);
      }  
 ### 返回数据给上一个活动
-  
+
+>这是我学习Android的笔记,参考书<<第一行代码-第二版>>,感谢郭霖大神  
+如有不足之处,可以一起讨论    
+附上郭霖的blog http://blog.csdn.net/guolin_blog
