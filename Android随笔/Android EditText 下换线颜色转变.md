@@ -50,7 +50,7 @@
         android:textColorHint="#fff"
         android:theme="@style/MyEditText" />
       </LinearLayout>
-
+    ```
 
 
 效果 :
