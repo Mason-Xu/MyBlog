@@ -61,3 +61,37 @@ Position Find(List L, ElementType X)
         return ERROR2;
     }
 }
+
+// 插入
+#define ERROR3 NULL  // 用空地址表示错误
+
+List Insert(List L, ElementType X, int i)
+{
+    Position tmp, pre;
+
+    tmp = (Position)malloc(sizeof(struct LNode));   // 申请,填装结点
+    tmp->Data = X;
+    if(i == 1){ // 新结点在表头指针
+        tmp->Next = L;
+        return tmp; //  返回新表头指针
+    }else{
+        // 查找位序为i-1的节点
+        
+        int cnt = 1;    // 位序从1开始
+        pre = L;    // pre指向L的第一个结点
+        while(pre && cnt < i-1){
+            pre = pre->Next;
+            cnt++;
+        }
+        if(pre == NULL || cnt != i-1){
+            printf("插入位置参数错误\n");
+            free(tmp);
+            return ERROR3;
+        }else{  // 找到待插结点的前一个结点pre
+            //插入新结点并返回表头L
+            tmp->Next = pre->Next;
+            pre->Next = tmp;
+            return L;
+        }
+    }
+}
