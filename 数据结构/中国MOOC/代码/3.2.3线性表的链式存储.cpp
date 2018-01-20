@@ -1,4 +1,5 @@
 typedef struct LNode *PtrToLNode;
+typedef int ElementType;
 struct LNode{
     ElementType Data;
     PtrToLNode Next;
@@ -45,7 +46,7 @@ ElementType FindKth(List L, int k)
 
 #define ERROR2 NULL; // 用空地址表示错误
 
-Position Find(List L, ElmentType X)
+Position Find(List L, ElementType X)
 {
     Position p = L; // p指向第一个结点
 
@@ -57,7 +58,7 @@ Position Find(List L, ElmentType X)
     if(p){
         return p;
     }else{
-        return ERROR;
+        return ERROR2;
     }
 }
 
