@@ -2,7 +2,7 @@
 #include<cstring> 
 const int maxn = 256;
 bool judge(char str[]){
-	int len = strlen(str);	// ×Ö·û´®³¤¶È
+	int len = strlen(str);	// ?????????
 	for(int i = 0;i<len/2;i++){
 		if(str[i]!=str[len-1-i]){
 			return false;
@@ -11,9 +11,9 @@ bool judge(char str[]){
 	return true;
 }
 int main(){
-	char str[maxn];	// ×Ö·û´®¶¨Òå 
-	while(gets(str)){	// ÊäÈëÒ»ÐÐ×Ö·û 
-		bool flag = judge(str);	// ÅÐ¶Ï
+	char str[maxn];	// ????????? 
+	while(gets(str)){	// ?????????? 
+		bool flag = judge(str);	// ?§Ø?
 		if(flag){
 			printf("YES\n");
 		}else{
