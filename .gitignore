@@ -1,2 +1,4 @@
 .vscode/settings.json
 .exe
+.vscode/launch.json
+.vscode/c_cpp_properties.json
