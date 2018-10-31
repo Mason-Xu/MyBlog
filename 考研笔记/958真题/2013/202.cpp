@@ -22,10 +22,10 @@ public :
 
 };
 
-int main() {
+int main202() {
 	CRectangle Rect1(3.0, 4.0);
 	CRectangle Rect2;
-	CRectangle Rect3 = Rect1;	// CRectangle Rect3; »áÔÙ´Î¹¹Ôìº¯Êı»òÕß´ø²Î¹¹Ôìº¯Êı
+	CRectangle Rect3 = Rect1;	// CRectangle Rect3; ä¼šå†æ¬¡æ„é€ å‡½æ•°æˆ–è€…å¸¦å‚æ„é€ å‡½æ•°
 	Rect1.GetArea();
 	Rect2.set(0, 1);
 	Rect2.GetArea();
