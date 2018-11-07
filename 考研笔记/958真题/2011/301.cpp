@@ -2,27 +2,32 @@
 #include<algorithm>
 using namespace std;
 
+// 先排序后删除
+// 新建一个新数组
 
 int main301() {
-	int a[20] = { 0 };
+	int a[20];
 	for (int i = 0; i < 20; i++) {
 		cin >> a[i];
 	}
-	int count=0;	// 重复个数
+	sort(a, a + 20);
+	int index=0;
+	int a_copy[20];
+
+	for (auto i : a) {
+		cout << i << " ";
+	}
+	cout << endl;
 	for (int i = 0; i < 20; i++) {
-		for (int j = i + 1; j < 20; j++) {
-			if (a[i] = a[j]) {
-				for (int k = j + 1; k < 20; k++) {
-					a[k - 1] = a[k];	// 将重复的往后移
-				}
-				count++;
-				j--;	//	进行自检
-			}
+		if (a[i] != a[i + 1]) {
+			a_copy[index++] = a[i];
 		}
 	}
-	for (int i = 0; i < 20-count; i++) {
-		cin >> a[i];
+
+	for (int i = 0; i < index;i++) {
+		cout << a_copy[i] << " ";
 	}
+	cout << endl;
 	system("pause");
 	return 0;
 }

@@ -5,20 +5,18 @@ class Rectangle {
 private:
 	double width;
 	double height;
-	double a;
 public:
-	Rectangle() { a = 0, width = 0, height = 0; }
+	Rectangle() { width = 0, height = 0; }
 	Rectangle(double w,double h){ 
 		width = w;
 		height = h;
 	}
-	double a() { 
-		a = width * height;
-		cout << a; 
-		return a;
+	double area() { 
+		cout << width*height; 
+		return width * height;
 	}
-	bool operator >(const Rectangle &r) {
-		if (a> r.a) {
+	bool operator >(const Rectangle &rect) {
+		if (width*height> rect.width*rect.height) {
 			return true;
 		}
 		else {
@@ -27,13 +25,13 @@ public:
 	}
 };
 
-int main() {
+int main302() {
 	Rectangle r1(5, 6), r2(4, 5);
-	cout << "r1çš„é¢ç§¯=";
-	r1.a();
+	cout << "r1µÄÃæ»ý=";
+	r1.area();
 	cout << endl;
-	cout << "r2çš„é¢ç§¯=";
-	r2.a();
+	cout << "r2µÄÃæ»ý=";
+	r2.area();
 	cout << endl;
 	if (r1 > r2) {
 		cout << "r1>r2" << endl;
@@ -42,6 +40,7 @@ int main() {
 		cout << "r1<r2" << endl;
 
 	}
+
 	system("pause");
 	return 0;
 
