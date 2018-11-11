@@ -16,7 +16,7 @@ void Sample::func(Sample& s) {
 	cout << "A=" << s.A << ",B=" << B << endl;
 }
 
-int main() {
+int main105() {
 	Sample s1(2), s2(7);
 	Sample::func(s1);
 	Sample::func(s2);

@@ -29,10 +29,10 @@ Point f(double x, double y) {
 	return p;
 }
 
-int main() {
+int main103() {
 	Point A(0, 0);
 	Point &&B = f(3, 4);
-	//f(3,4) error 非常量的初始值必须为左值
+	//f(3,4) error 锟角筹拷锟斤拷锟侥筹拷始值锟斤拷锟斤拷为锟斤拷值
 	cout << "Distance is " << A.Distance(B) << endl;
 	system("pause");
 	return 0;
