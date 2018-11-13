@@ -12,7 +12,7 @@ public :
 	}
 };
 
-int main() {
+int main204() {
 	local a, b, c;
 	a.init();
 	a.printX();
