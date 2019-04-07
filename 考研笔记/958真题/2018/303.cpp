@@ -37,7 +37,7 @@ int main() {
 			cout << "请输入一个正整数：";
 			int x;
 		}
-	}while()
+	}while();
 	system("pause");
 	return 0;
 }
