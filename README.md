@@ -1,3 +1,3 @@
 # Readme😁
 
-## 个人域名博客 [masonxu.xyz](http://masonxu.xyz) 👍
+## 个人域名博客 [masonxu.io](https://mason-xu.github.io) 👍
